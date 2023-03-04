@@ -50,7 +50,7 @@
       <a
         :href="meal.strSource"
         target="_blank"
-        class="px-3 py-2 rounded inline-flex border-2 bg-emerald-600 hover:bg-emerald-700 text-white transition-colors"
+        class="px-3 py-2 rounded inline-flex border-2 bg-emerald-600 hover:bg-emerald-700 text-white border-transparent transition-colors"
         >View Original Source
       </a>
     </div>
