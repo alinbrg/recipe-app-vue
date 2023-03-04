@@ -4,7 +4,7 @@
     target="_blank"
     class="px-3 py-2 rounded inline-flex border-2 bg-red-500 hover:bg-red-600 text-white transition-colors"
   >
-    <slot></slot>
+    <slot>YouTube</slot>
   </a>
 </template>
 

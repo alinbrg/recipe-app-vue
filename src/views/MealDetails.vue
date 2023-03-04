@@ -1,5 +1,6 @@
 <template>
   <div class="max-w-4xl mx-auto p-8">
+    <!-- <pre> {{ meal }}</pre> -->
     <h1 class="text-5xl font-bold mb-5">{{ meal.strMeal }}</h1>
     <img
       class="w-full object-cover"
@@ -9,10 +10,15 @@
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-3 text-lg py-2">
       <div><span class="font-bold">Category:</span> {{ meal.strCategory }}</div>
       <div><span class="font-bold">Area:</span> {{ meal.strArea }}</div>
-      <div><span class="font-bold">Tags:</span> {{ meal.strTags }}</div>
+      <div>
+        <span class="font-bold">Tags:</span>
+        {{ meal.strTags?.split(",")?.join(", ") }}
+      </div>
     </div>
 
-    <table class="border-collapse border border-slate-500 mx-auto">
+    <table
+      class="border-collapse border border-slate-500 mx-auto w-full max-w-2xl mt-4"
+    >
       <thead>
         <tr>
           <th class="border border-slate-600 bg-zinc-400 p-3">Ingredients</th>
