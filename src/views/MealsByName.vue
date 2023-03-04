@@ -1,17 +1,19 @@
 <template>
-  <div class="p-8 pb-0">
-    <input
-      type="text"
-      v-model="keyword"
-      class="rounded border-2 border-gray-200 w-full"
-      placeholder="Search for Meals"
-      @change="searchMeals"
-    />
-  </div>
+  <section>
+    <div class="p-8 pb-0">
+      <input
+        type="text"
+        v-model="keyword"
+        class="rounded border-2 border-gray-200 w-full"
+        placeholder="Search for Meals"
+        @change="searchMeals"
+      />
+    </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
-    <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
-  </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
+      <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
+    </div>
+  </section>
 </template>
 
 <script setup>
