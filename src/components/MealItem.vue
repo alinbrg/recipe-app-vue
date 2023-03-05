@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white shadow rounded">
+  <div class="bg-white shadow rounded-xl hover:shadow-xl transition-all">
     <router-link
       :to="{
         name: 'mealDetails',
@@ -11,16 +11,22 @@
       <img
         :src="meal.strMealThumb"
         :alt="meal.strMeal"
-        class="rounded-t h-48 w-full object-cover"
+        class="rounded-t-xl h-48 w-full object-cover"
       />
     </router-link>
 
     <div class="p-3">
-      <h3 class="font-bold">{{ meal.strMeal }}</h3>
-      <p class="mb-4">{{ meal.strInstructions.substring(0, 100) }}...</p>
+      <h3 class="font-bold mb-3">{{ meal.strMeal }}</h3>
+      <p v-if="meal.strInstructions" class="mb-4">
+        {{
+          meal.strInstructions.length > 100
+            ? meal.strInstructions.substring(0, 100) + "..."
+            : meal.strInstructions
+        }}
+      </p>
 
-      <div class="flex gap-3">
-        <YouTubeButton :href="meal.strYoutube" />
+      <div class="flex gap-3 flex-wrap">
+        <YouTubeButton v-if="meal.strYoutube" :href="meal.strYoutube" />
         <router-link
           :to="{
             name: 'mealDetails',
@@ -28,7 +34,7 @@
               id: meal.idMeal,
             },
           }"
-          class="px-3 py-2 rounded inline-flex border-2 bg-emerald-600 hover:bg-emerald-700 border-transparent text-white transition-colors"
+          class="px-3 py-2 rounded inline-flex border-2 bg-purple-400 hover:bg-purple-500 border-transparent hover:text-white transition-colors"
           >See More Details</router-link
         >
       </div>

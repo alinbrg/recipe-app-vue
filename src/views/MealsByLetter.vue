@@ -1,17 +1,16 @@
 <template>
-  <section>
-    <div class="flex gap-2 mt-2 justify-center flex-wrap">
+  <section class="max-w-[1024px] mx-auto p-5">
+    <div class="flex gap-4 justify-center flex-wrap mb-8">
       <router-link
         v-for="letter of letters"
         :to="{ name: 'byLetter', params: { letter } }"
         :key="letter"
+        class="hover:text-purple-900 hover:scale-150 transition-all font-semibold"
       >
         {{ letter }}
       </router-link>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
-      <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
-    </div>
+    <Meals :meals="meals" />
   </section>
 </template>
 
@@ -19,7 +18,7 @@
 import { computed, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 import store from "../store";
-import MealItem from "../components/MealItem.vue";
+import Meals from "../components/Meals.vue";
 
 const route = useRoute();
 const letters = "ABCDEFGHIJKLMONPQRSTUVWXYZ".split("");

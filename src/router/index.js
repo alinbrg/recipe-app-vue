@@ -6,6 +6,7 @@ import MealsByName from "../views/MealsByName.vue";
 import MealsByIngredient from "../views/MealsByIngredient.vue";
 import DefaultLayout from "../components/DefaultLayout.vue";
 import MealDetails from "../views/MealDetails.vue";
+import Ingredients from "../views/Ingredients.vue";
 
 const routes = [
   {
@@ -13,27 +14,32 @@ const routes = [
     componenet: DefaultLayout,
     children: [
       {
-        path: "/",
+        path: "/recipe-app-vue/",
         name: "home",
         component: Home,
       },
       {
-        path: "/by-name/:name?",
+        path: "/recipe-app-vue/by-name/:name?",
         name: "byName",
         component: MealsByName,
       },
       {
-        path: "/by-letter/:letter?",
+        path: "/recipe-app-vue/by-letter/:letter?",
         name: "byLetter",
         component: MealsByLetter,
       },
       {
-        path: "/by-ingredient/:ingredient?",
+        path: "/recipe-app-vue/ingredients",
+        name: "ingredients",
+        component: Ingredients,
+      },
+      {
+        path: "/recipe-app-vue/by-ingredient/:ingredient",
         name: "byIngredient",
         component: MealsByIngredient,
       },
       {
-        path: "/meal/:id",
+        path: "/recipe-app-vue/recipe/:id",
         name: "mealDetails",
         component: MealDetails,
       },

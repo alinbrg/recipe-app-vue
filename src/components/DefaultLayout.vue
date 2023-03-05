@@ -1,11 +1,9 @@
 <template>
-  <div class="bg-gray-100 h-full">
-    <Header />
-    <main>
-      <router-view />
-    </main>
-    <footer class="bg-white p-2 text-center">2023</footer>
-  </div>
+  <Header />
+  <main>
+    <router-view />
+  </main>
+  <!-- <footer class="bg-white p-6 text-center">2023</footer> -->
 </template>
 
 <script setup>

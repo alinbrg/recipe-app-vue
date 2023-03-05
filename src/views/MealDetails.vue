@@ -1,7 +1,6 @@
 <template>
-  <div class="max-w-4xl mx-auto p-8">
-    <!-- <pre> {{ meal }}</pre> -->
-    <h1 class="text-5xl font-bold mb-5">{{ meal.strMeal }}</h1>
+  <section class="max-w-[1024px] mx-auto p-5">
+    <h1 class="text-5xl font-bold mb-5 text-purple-700">{{ meal.strMeal }}</h1>
     <img
       class="w-full object-cover"
       :src="meal.strMealThumb"
@@ -17,24 +16,26 @@
     </div>
 
     <table
-      class="border-collapse border border-slate-500 mx-auto w-full max-w-2xl mt-4"
+      class="border-collapse border border-purple-500 mx-auto w-full max-w-2xl mt-4"
     >
       <thead>
         <tr>
-          <th class="border border-slate-600 bg-zinc-400 p-3">Ingredients</th>
-          <th class="border p-3 border-slate-600 bg-zinc-400">Measures</th>
+          <th class="border border-purple-600 bg-purple-400 p-3">
+            Ingredients
+          </th>
+          <th class="border p-3 border-purple-600 bg-purple-400">Measures</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(el, i) of new Array(20)" :key="i">
           <td
-            class="border border-slate-700 p-3 bg-zinc-200"
+            class="border border-purple-700 p-3 bg-purple-200"
             v-if="meal[`strIngredient${i + 1}`]"
           >
             {{ meal[`strIngredient${i + 1}`] }}
           </td>
           <td
-            class="border border-slate-700 p-3 bg-zinc-200"
+            class="border border-purple-700 p-3 bg-purple-200"
             v-if="meal[`strMeasure${i + 1}`]"
           >
             {{ meal[`strMeasure${i + 1}`] }}
@@ -46,15 +47,16 @@
       {{ meal.strInstructions }}
     </p>
     <div class="flex flex-wrap gap-3">
-      <YouTubeButton :href="meal.strYoutube">See on YouTube</YouTubeButton>
-      <a
+      <YouTubeButton v-if="meal.strYoutube" :href="meal.strYoutube"
+        >See on YouTube</YouTubeButton
+      >
+      <SeeMoreButton
+        v-if="meal.strSource"
         :href="meal.strSource"
-        target="_blank"
-        class="px-3 py-2 rounded inline-flex border-2 bg-emerald-600 hover:bg-emerald-700 text-white border-transparent transition-colors"
-        >View Original Source
-      </a>
+        text="View Original Source"
+      />
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>
@@ -62,6 +64,7 @@ import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import axiosClient from "../axiosClient";
 import YouTubeButton from "../components/YouYubeButton.vue";
+import SeeMoreButton from "../components/SeeMoreButton.vue";
 const route = useRoute();
 
 const meal = ref({});
